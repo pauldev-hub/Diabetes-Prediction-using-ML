@@ -422,49 +422,6 @@ Content-Type: application/json
 
 ---
 
-### Example Usage (JavaScript/Fetch)
-
-```javascript
-async function predictDiabetes(features) {
-  try {
-    const response = await fetch('https://your-api-url/predict', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(features)
-    });
-
-    const data = await response.json();
-    
-    if (response.ok) {
-      console.log(`Prediction: ${data.prediction}`);
-      console.log(`Probability: ${data.probability}%`);
-    } else {
-      console.error(`Error: ${data.error}`);
-    }
-  } catch (error) {
-    console.error('Request failed:', error);
-  }
-}
-
-// Usage
-const features = {
-  pregnancies: 6,
-  glucose: 148,
-  bloodPressure: 72,
-  skinThickness: 35,
-  insulin: 0,
-  bmi: 33.6,
-  dpf: 0.627,
-  age: 50
-};
-
-predictDiabetes(features);
-```
-
----
-
 ### CORS Configuration
 
 The backend has CORS enabled for all origins in development. For production, configure allowed origins in `app.py`:
@@ -692,7 +649,7 @@ VITE_MODEL_PATH=/diabetes_model.onnx
 
 ## 🤝 Contributing
 
-We welcome contributions! Here's how to help:
+I welcome contributions! Here's how to help:
 
 1. **Fork** the repository
 2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
@@ -723,73 +680,6 @@ Fix linting issues automatically:
 ```bash
 npm run lint -- --fix
 ```
-
----
-
-## 🐛 Troubleshooting
-
-### Frontend Issues
-
-| Issue | Solution |
-|-------|----------|
-| **Port 5173 already in use** | Change port: `npm run dev -- --port 3000` |
-| **Dependencies not installing** | Clear cache: `npm cache clean --force && npm install` |
-| **CORS errors** | Ensure backend API URL is configured in `.env` |
-| **localStorage not working** | Clear browser cache and cookies |
-| **ONNX model not loading** | Check `public/diabetes_model.onnx` exists |
-| **Blank page after login** | Check browser console for JS errors |
-| **API calls failing** | Verify backend is running: `http://localhost:5000` |
-
-### Backend Issues
-
-| Issue | Solution |
-|-------|----------|
-| **Port 5000 already in use** | Kill process: `lsof -ti:5000 \| xargs kill -9` (Linux/Mac) or use different port |
-| **Virtual environment not activating** | Ensure correct path and use full activation command |
-| **Module not found errors** | Reinstall dependencies: `pip install -r requirements.txt` |
-| **Model file not found** | Ensure `diabetes_model.pkl` exists in `backend/` directory |
-| **CORS errors** | Flask-CORS is installed: `pip install flask-cors` |
-| **Prediction returns error** | Check input data format matches API specification |
-| **Gunicorn not found** | Install: `pip install gunicorn` |
-| **Python version conflict** | Use Python 3.9+: `python --version` |
-
-### Full Stack Issues
-
-| Issue | Solution |
-|-------|----------|
-| **Frontend can't reach backend** | Check backend URL in `.env`, ensure backend is running |
-| **Authentication not working** | Check localStorage in browser DevTools Application tab |
-| **Deployment failing** | Review deployment logs in Vercel/Render dashboard |
-| **Prediction always returns 0** | Verify model file is correctly trained and loaded |
-
----
-
-## 📚 Additional Resources
-
-### Documentation
-
-- [React Documentation](https://react.dev/)
-- [Vite Documentation](https://vitejs.dev/)
-- [Flask Documentation](https://flask.palletsprojects.com/)
-- [scikit-learn Documentation](https://scikit-learn.org/)
-- [React Router Guide](https://reactrouter.com/)
-
-### ML & Data Science
-
-- [scikit-learn Diabetes Example](https://scikit-learn.org/stable/datasets/toy_dataset.html#diabetes-dataset)
-- [ONNX Runtime Web](https://onnxruntime.ai/docs/get-started/with-web/)
-- [Machine Learning Basics](https://developers.google.com/machine-learning/guides)
-
-### Deployment
-
-- [Vercel Documentation](https://vercel.com/docs)
-- [Render Documentation](https://render.com/docs)
-- [Heroku Documentation](https://devcenter.heroku.com/articles/getting-started-with-python)
-
-### General
-
-- [MDN Web Docs](https://developer.mozilla.org/)
-- [GitHub Documentation](https://docs.github.com/)
 
 ---
 
